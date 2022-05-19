@@ -7,7 +7,7 @@
     <services>
         <defaults autowire="true" autoconfigure="true" public="false">
         </defaults>
-        <prototype namespace="CarlosChininin\UploadFile\" resource="../../../../src/*" exclude="../../../../src/{DependencyInjection,Model}"/>
+        <prototype namespace="CarlosChininin\UploadFile\" resource="../../../src/*" exclude="../../../src/{DependencyInjection,Model}"/>
         <service id="CarlosChininin\UploadFile\Service\UploadFileService">
             <argument key="$targetDirectory">%upload_file_directory%</argument>
         </service>
