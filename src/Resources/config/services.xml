@@ -8,5 +8,8 @@
         <service id="CarlosChininin\UploadFile\Service\UploadFileService">
             <argument key="$targetDirectory">%upload_file_directory%</argument>
         </service>
+        <service id="CarlosChininin\UploadFile\EventSubscriber\UploadFileEventSubscriber">
+            <argument type="service" id="CarlosChininin\UploadFile\Service\UploadFileService"/>
+        </service>
     </services>
 </container>
