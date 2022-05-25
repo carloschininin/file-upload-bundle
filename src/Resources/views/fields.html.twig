@@ -7,7 +7,7 @@
 
 {% block image_file_upload_widget %}
     {% if value %}
-        <a href="{{ value|file_upload_webpath }}" target="_blank">
+        <a href="{{ value|file_upload_webpath }}" class="float-start" target="_blank">
             <img src="{{ value|file_upload_webpath }}" alt="{{ value.name }}" height="40" />
         </a>
     {% endif %}
