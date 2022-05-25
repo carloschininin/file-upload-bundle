@@ -1,5 +1,5 @@
 {
-    "name": "carloschininin/upload-file",
+    "name": "carloschininin/file-upload-bundle",
     "description": "Upload files",
     "type": "project",
     "autoload": {
