@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block image_file_upload_widget %}
-    <div class="d-flex align-items-center pe-15">
+    <div class="d-flex align-items-center">
         {% if value %}
             <div class="flex-shrink-1">
                 <a href="{{ value|file_upload_webpath }}" class="float-start" target="_blank">
@@ -17,8 +17,9 @@
                 </a>
             </div>
         {% endif %}
-        <div class="ms-2">
-            {{ form_widget(form) }}
+        <div id="{{ id }}" class="ms-2">
+            {{ dump(form) }}
+{#            <input type="file" id="usuario_foto_file" name="usuario[foto][file]">#}
         </div>
     </div>
 {% endblock %}
