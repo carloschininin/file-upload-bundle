@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace CarlosChininin\UploadFile\Service;
+namespace CarlosChininin\FileUpload\Service;
 
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class UploadFileService
+class FileUploadService
 {
     private string $targetDirectory;
 

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace CarlosChininin\UploadFile\Model;
+namespace CarlosChininin\FileUpload\Model;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class UploadFile
+class FileUpload
 {
     private ?int $id = null;
     private ?string $name = null;

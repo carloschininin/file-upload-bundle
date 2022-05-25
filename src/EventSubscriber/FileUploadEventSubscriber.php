@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace CarlosChininin\UploadFile\EventSubscriber;
+namespace CarlosChininin\FileUpload\EventSubscriber;
 
-use CarlosChininin\UploadFile\Model\UploadFile;
-use CarlosChininin\UploadFile\Service\UploadFileService;
+use CarlosChininin\FileUpload\Model\FileUpload;
+use CarlosChininin\FileUpload\Service\FileUploadService;
 use Doctrine\Bundle\DoctrineBundle\EventSubscriber\EventSubscriberInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Events;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-final class UploadFileEventSubscriber implements EventSubscriberInterface
+final class FileUploadEventSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private readonly UploadFileService $uploadFileService)
+    public function __construct(private readonly FileUploadService $FileUploadService)
     {
     }
 
@@ -31,18 +31,18 @@ final class UploadFileEventSubscriber implements EventSubscriberInterface
     {
         $entity = $args->getEntity();
 
-        $this->uploadFile($entity);
+        $this->FileUpload($entity);
     }
 
     public function preUpdate(PreUpdateEventArgs $args): void
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof UploadFile) {
+        if ($entity instanceof FileUpload) {
             $entity->setPathTemp($entity->path());
         }
 
-        $this->uploadFile($entity);
+        $this->FileUpload($entity);
     }
 
     public function preRemove(LifecycleEventArgs $args): void
@@ -52,28 +52,28 @@ final class UploadFileEventSubscriber implements EventSubscriberInterface
         $this->removeFile($entity);
     }
 
-    private function uploadFile($entity): void
+    private function FileUpload($entity): void
     {
-        if (!$entity instanceof UploadFile) {
+        if (!$entity instanceof FileUpload) {
             return;
         }
 
         $file = $entity->file();
 
         if ($file instanceof UploadedFile) {
-            $secure = $this->uploadFileService->upload($file);
+            $secure = $this->FileUploadService->upload($file);
             $entity->setSecure($secure);
-            $this->uploadFileService->remove($entity->pathTemp());
+            $this->FileUploadService->remove($entity->pathTemp());
         }
     }
 
     private function removeFile($entity): void
     {
-        if (!$entity instanceof UploadFile) {
+        if (!$entity instanceof FileUpload) {
             return;
         }
 
         $nombre = $entity->path();
-        $this->uploadFileService->remove($nombre);
+        $this->FileUploadService->remove($nombre);
     }
 }

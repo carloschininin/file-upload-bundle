@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace CarlosChininin\UploadFile\Form;
+namespace CarlosChininin\FileUpload\Form;
 
-use CarlosChininin\UploadFile\Model\UploadFile;
+use CarlosChininin\FileUpload\Model\FileUpload;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UploadFileFormType extends AbstractType
+class FileUploadFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -22,7 +22,7 @@ class UploadFileFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => UploadFile::class,
+            'data_class' => FileUpload::class,
         ]);
     }
 }

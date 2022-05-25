@@ -4,7 +4,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "CarlosChininin\\UploadFile\\": "src/"
+            "CarlosChininin\\FileUpload\\": "src/"
         }
     },
     "authors": [

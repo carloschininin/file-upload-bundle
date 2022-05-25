@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace CarlosChininin\UploadFile;
+namespace CarlosChininin\FileUpload;
 
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class UploadFileBundle extends Bundle
+final class FileUploadBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {
@@ -19,7 +19,7 @@ final class UploadFileBundle extends Bundle
     private function addRegisterMappingsPass(ContainerBuilder $container)
     {
         $mappings = [
-            realpath(__DIR__.'/Resources/config/doctrine-mapping') => 'CarlosChininin\UploadFile\Model',
+            realpath(__DIR__.'/Resources/config/doctrine-mapping') => 'CarlosChininin\FileUpload\Model',
         ];
 
         if (class_exists('Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass')) {
