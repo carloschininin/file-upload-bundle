@@ -1,13 +1,15 @@
 {% block file_upload_widget %}
-    {% if value %}
-        <label class="">{{ value.name }}</label>
-    {% endif %}
     {{ form_widget(form) }}
+    {% if value %}
+        <a href="{{ value|file_upload_webpath }}" class="text-success" target="_blank">{{ value.name }}</a>
+    {% endif %}
 {% endblock %}
 
 {% block image_file_upload_widget %}
     {% if value %}
-        <img src="{{ value|file_upload_webpath }}" alt="{{ value.name }}" height="50" />
+        <a href="{{ value|file_upload_webpath }}" target="_blank">
+            <img src="{{ value|file_upload_webpath }}" alt="{{ value.name }}" height="40" />
+        </a>
     {% endif %}
     {{ form_widget(form) }}
 {% endblock %}
