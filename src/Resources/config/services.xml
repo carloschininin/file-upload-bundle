@@ -17,5 +17,9 @@
             <argument key="$publicDirectory">%app.public_directory%</argument>
             <argument key="$fileUploadDirectory">%app.file_upload_directory%</argument>
         </service>
+        <service id="CarlosChininin\FileUpload\Twig\FileUploadTwigExtension">
+            <argument>%app.file_upload_directory%</argument>
+            <tag name="twig.extension"/>
+        </service>
     </services>
 </container>
