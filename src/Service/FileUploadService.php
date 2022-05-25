@@ -9,11 +9,10 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FileUploadService
 {
-    private string $targetDirectory;
-
-    public function __construct($targetDirectory)
-    {
-        $this->targetDirectory = $targetDirectory;
+    public function __construct(
+        private readonly string $publicDirectory,
+        private readonly string $fileUploadDirectory
+    ) {
     }
 
     public function upload(UploadedFile $file): string
@@ -29,13 +28,13 @@ class FileUploadService
         return $secure;
     }
 
-    public function remove(?string $nombre): void
+    public function remove(?string $fileName): void
     {
-        if (null === $nombre || '' === trim($nombre)) {
+        if (null === $fileName || '' === trim($fileName)) {
             return;
         }
 
-        $file = $this->getTargetDirectory().$nombre;
+        $file = $this->getTargetDirectory().$fileName;
 
         if (file_exists($file)) {
             unlink($file);
@@ -44,6 +43,6 @@ class FileUploadService
 
     public function getTargetDirectory(): string
     {
-        return $this->targetDirectory;
+        return $this->publicDirectory.$this->fileUploadDirectory;
     }
 }

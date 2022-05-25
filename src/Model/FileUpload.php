@@ -63,6 +63,15 @@ class FileUpload
         }
     }
 
+    public function filePath(): ?string
+    {
+        if (null === $this->secure()) {
+            return null;
+        }
+
+        return $this->path().'/'.$this->secure();
+    }
+
     public function pathTemp(): ?string
     {
         return $this->pathTemp;

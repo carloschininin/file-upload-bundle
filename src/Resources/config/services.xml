@@ -4,12 +4,18 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services
         https://symfony.com/schema/dic/services/services-1.0.xsd">
 
+    <parameters>
+        <parameter key="app.public_directory">%kernel.project_dir%/public</parameter>
+        <parameter key="app.file_upload_directory">/upload</parameter>
+    </parameters>
+
     <services>
         <defaults autowire="true" autoconfigure="true" public="false">
         </defaults>
         <prototype namespace="CarlosChininin\FileUpload\" resource="../../../src/*" exclude="../../../src/{DependencyInjection,Model}"/>
         <service id="CarlosChininin\FileUpload\Service\FileUploadService">
-            <argument key="$targetDirectory">%upload_file_directory%</argument>
+            <argument key="$publicDirectory">%app.public_directory%</argument>
+            <argument key="$fileUploadDirectory">%app.file_upload_directory%</argument>
         </service>
     </services>
 </container>
