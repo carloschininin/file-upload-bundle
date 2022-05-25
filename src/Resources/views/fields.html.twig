@@ -18,8 +18,7 @@
             </div>
         {% endif %}
         <div id="{{ id }}" class="ms-2">
-            {{ dump(form) }}
-{#            <input type="file" id="usuario_foto_file" name="usuario[foto][file]">#}
+            {{ form_widget(form.file) }}
         </div>
     </div>
 {% endblock %}
