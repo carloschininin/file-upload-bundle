@@ -12,6 +12,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FileUploadFormType extends AbstractType
 {
+    public const NAME = 'file_upload';
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -24,5 +26,10 @@ class FileUploadFormType extends AbstractType
         $resolver->setDefaults([
             'data_class' => FileUpload::class,
         ]);
+    }
+
+    public function getBlockPrefix(): string
+    {
+        return self::NAME;
     }
 }

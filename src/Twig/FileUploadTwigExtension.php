@@ -31,6 +31,3 @@ final class FileUploadTwigExtension extends AbstractExtension
         return $this->fileUploadDirectory.$file->filePath();
     }
 }
-{
-
-}

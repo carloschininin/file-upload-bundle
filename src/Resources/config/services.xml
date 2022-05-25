@@ -12,7 +12,7 @@
     <services>
         <defaults autowire="true" autoconfigure="true" public="false">
         </defaults>
-        <prototype namespace="CarlosChininin\FileUpload\" resource="../../../src/*" exclude="../../../src/{DependencyInjection,Model}"/>
+        <prototype namespace="CarlosChininin\FileUpload\" resource="../../../src/*" exclude="../../../src/{DependencyInjection,Model,FileUploadBundle.php}"/>
         <service id="CarlosChininin\FileUpload\Service\FileUploadService">
             <argument key="$publicDirectory">%app.public_directory%</argument>
             <argument key="$fileUploadDirectory">%app.file_upload_directory%</argument>

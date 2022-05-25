@@ -1,0 +1,13 @@
+{% block file_upload_widget %}
+    {% if value %}
+        <label class="">{{ value.name }}</label>
+    {% endif %}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{% block image_file_upload_widget %}
+    {% if value %}
+        <img src="{{ value|file_upload_webpath }}" alt="{{ value.name }}" height="50" />
+    {% endif %}
+    {{ form_widget(form) }}
+{% endblock %}
