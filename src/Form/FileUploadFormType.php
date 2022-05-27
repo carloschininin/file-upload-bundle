@@ -20,6 +20,7 @@ class FileUploadFormType extends AbstractType
         $builder
             ->add('file', FileType::class, [
                 'label' => false,
+                'constraints' => $options['constraints'],
             ])
             ->add('folder', HiddenType::class, [
                 'empty_data' => $options['folder'],
@@ -32,6 +33,7 @@ class FileUploadFormType extends AbstractType
         $resolver->setDefaults([
             'data_class' => FileUpload::class,
             'folder' => null,
+            'constraints' => [],
         ]);
     }
 
