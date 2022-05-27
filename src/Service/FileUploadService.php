@@ -15,13 +15,14 @@ class FileUploadService
     ) {
     }
 
-    public function upload(UploadedFile $file): string
+    public function upload(UploadedFile $file, ?string $folder = null): string
     {
         $extension = $file->getClientOriginalExtension();
         $secure = sha1(uniqid((string) mt_rand(), true)).'.'.$extension;
 
         try {
-            $file->move($this->getTargetDirectory(), $secure);
+            $folder = $this->getFolder($folder);
+            $file->move($this->getTargetDirectory().$folder, $secure);
         } catch (FileException) {
         }
 
@@ -39,6 +40,19 @@ class FileUploadService
         if (file_exists($file)) {
             unlink($file);
         }
+    }
+
+    public function getFolder(?string $folder): string
+    {
+        if (null === $folder || '' === trim($folder)) {
+            return '';
+        }
+
+        if (!str_starts_with('/', $folder)) {
+            return '/'.$folder;
+        }
+
+        return $folder;
     }
 
     public function getTargetDirectory(): string

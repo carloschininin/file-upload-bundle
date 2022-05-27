@@ -58,7 +58,7 @@ final class FileUploadEventSubscriber implements EventSubscriberInterface
 
         if ($file instanceof UploadedFile) {
             $previusPath = $entity->filePath();
-            $secure = $this->FileUploadService->upload($file);
+            $secure = $this->FileUploadService->upload($file, $entity->folder());
             $entity->setSecure($secure);
             $this->FileUploadService->remove($previusPath);
         }
@@ -70,7 +70,7 @@ final class FileUploadEventSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $nombre = $entity->filePath();
-        $this->FileUploadService->remove($nombre);
+        $filepath = $entity->filePath();
+        $this->FileUploadService->remove($filepath);
     }
 }
