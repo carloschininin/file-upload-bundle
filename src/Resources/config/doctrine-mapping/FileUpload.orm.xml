@@ -13,6 +13,6 @@
 
         <field name="secure" column="secure" length="48" unique="true" />
 
-        <field name="path" column="path" length="255" nullable="true" />
+        <field name="folder" column="folder" length="255" nullable="true" />
     </entity>
 </doctrine-mapping>
