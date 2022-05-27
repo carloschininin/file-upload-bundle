@@ -7,6 +7,7 @@ namespace CarlosChininin\FileUpload\Form;
 use CarlosChininin\FileUpload\Model\FileUpload;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,7 +18,12 @@ class FileUploadFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', FileType::class, ['label' => false])
+            ->add('file', FileType::class, [
+                'label' => false,
+            ])
+            ->add('folder', HiddenType::class, [
+                'empty_data' => $options['folder'],
+            ])
         ;
     }
 
@@ -25,6 +31,7 @@ class FileUploadFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => FileUpload::class,
+            'folder' => null,
         ]);
     }
 

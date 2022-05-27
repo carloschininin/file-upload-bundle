@@ -31,18 +31,14 @@ final class FileUploadEventSubscriber implements EventSubscriberInterface
     {
         $entity = $args->getEntity();
 
-        $this->FileUpload($entity);
+        $this->uploadFile($entity);
     }
 
     public function preUpdate(PreUpdateEventArgs $args): void
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof FileUpload) {
-            $entity->setPathTemp($entity->path());
-        }
-
-        $this->FileUpload($entity);
+        $this->uploadFile($entity);
     }
 
     public function preRemove(LifecycleEventArgs $args): void
@@ -52,7 +48,7 @@ final class FileUploadEventSubscriber implements EventSubscriberInterface
         $this->removeFile($entity);
     }
 
-    private function FileUpload($entity): void
+    private function uploadFile($entity): void
     {
         if (!$entity instanceof FileUpload) {
             return;

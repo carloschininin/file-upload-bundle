@@ -11,9 +11,9 @@ class FileUpload
     private ?int $id = null;
     private ?string $name = null;
     private ?string $secure =null;
-    private ?string $path = null;
+    private ?string $folder = null;
+
     private ?UploadedFile $file = null;
-    private ?string $pathTemp = null;
 
     public function id(): ?int
     {
@@ -40,14 +40,14 @@ class FileUpload
         $this->secure = $secure;
     }
 
-    public function path(): ?string
+    public function folder(): ?string
     {
-        return $this->path;
+        return $this->folder;
     }
 
-    public function setPath(?string $path): void
+    public function setFolder(?string $folder): void
     {
-        $this->path = $path;
+        $this->folder = $folder;
     }
 
     public function file(): ?UploadedFile
@@ -69,16 +69,6 @@ class FileUpload
             return null;
         }
 
-        return $this->path().'/'.$this->secure();
-    }
-
-    public function pathTemp(): ?string
-    {
-        return $this->pathTemp;
-    }
-
-    public function setPathTemp(?string $pathTemp): void
-    {
-        $this->pathTemp = $pathTemp;
+        return $this->folder().'/'.$this->secure();
     }
 }
