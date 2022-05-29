@@ -19,8 +19,8 @@
         {% endif %}
         <div id="{{ id }}" class="ms-2">
             {{ form_widget(form.file) }}
-            {{ form_help(form) }}
-            {{ form_errors(form) }}
+            {{ form_help(form.file) }}
+            {{ form_errors(form.file) }}
         </div>
     </div>
 {% endblock %}
