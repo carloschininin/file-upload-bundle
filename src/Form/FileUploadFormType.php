@@ -23,7 +23,7 @@ class FileUploadFormType extends AbstractType
                 'constraints' => $options['validators'],
             ])
             ->add('folder', HiddenType::class, [
-                'data' => $options['folder'],
+                'empty_data' => $options['folder'],
             ])
         ;
     }
