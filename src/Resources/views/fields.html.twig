@@ -10,7 +10,7 @@
 
 {% block image_file_upload_widget %}
     <div class="d-flex align-items-center">
-        {% if value and form.file.vars.errors is empty %}
+        {% if value %}
             <div class="flex-shrink-1">
                 <a href="{{ value|file_upload_webpath }}" class="float-start" target="_blank">
                     <img src="{{ value|file_upload_webpath }}" alt="{{ value.name }}" height="42" />
@@ -20,7 +20,9 @@
         <div id="{{ id }}" class="ms-2">
             {{ form_widget(form.file) }}
             {{ form_help(form.file) }}
-            {{ form_errors(form.file) }}
         </div>
+    </div>
+    <div class="text-danger">
+        {{ form_errors(form.file) }}
     </div>
 {% endblock %}
